@@ -1,5 +1,5 @@
 # Bilbo Chatbot
 
-### used
+### in use
 - Slack API / Hubot
 - recurrent neural network
