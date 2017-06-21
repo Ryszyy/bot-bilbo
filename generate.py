@@ -7,6 +7,7 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.callbacks import ModelCheckpoint
 from keras.utils import np_utils
+import random
 # load ascii text and covert to lowercase
 filename = "bilbo.txt"
 raw_text = open(filename).read()
@@ -21,7 +22,7 @@ n_vocab = len(chars)
 # print("Total Characters: ", n_chars)
 # print("Total Vocab: ", n_vocab)
 # prepare the dataset of input to output pairs encoded as integers
-seq_length = 100
+seq_length = 40
 dataX = []
 dataY = []
 for i in range(0, n_chars - seq_length, 1):
@@ -49,22 +50,25 @@ model.compile(loss='categorical_crossentropy', optimizer='adam')
 # pick a random seed
 start = numpy.random.randint(0, len(dataX)-1)
 pattern = dataX[start]
-# print("Seed:")
-# print("\"", ''.join([int_to_char[value] for value in pattern]), "\"")
+print("Seed:")
+print("\"", ''.join([int_to_char[value] for value in pattern]), "\"")
 
 # generate characters
-def generate_sentence(chars=100, pattern=pattern):
+def generate_sentence(chars=60, pattern=pattern):
 	sentence = ""
+	# print(len(pattern))
 	for i in range(chars):
-		x = numpy.reshape(pattern, (1, len(pattern), 1))
+		random.shuffle(pattern)
+		x = numpy.reshape(pattern[:40], (1, len(pattern[:40]), 1))
 		x = x / float(n_vocab)
 		prediction = model.predict(x, verbose=0)
+
 		index = numpy.argmax(prediction)
 		result = int_to_char[index]
 		seq_in = [int_to_char[value] for value in pattern]
-		# sys.stdout.write(result)
 		sentence = sentence + result
-		# print(result, "")
+
+
 		pattern.append(index)
 		pattern = pattern[1:len(pattern)]
 	return sentence
