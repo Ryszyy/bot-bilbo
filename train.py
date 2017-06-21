@@ -9,7 +9,7 @@ from keras.utils import np_utils
 
 
 # load ascii text and covert to lowercase
-filename = "bilbo.txt"
+filename = "Monica.txt"
 raw_text = open(filename).read()
 raw_text = raw_text.lower()
 
@@ -27,7 +27,7 @@ print("Total Vocab: ", n_vocab)
 
 
 # prepare the dataset of input to output pairs encoded as integers
-seq_length = 40
+seq_length = 100
 dataX = []
 dataY = []
 for i in range(0, n_chars - seq_length, 1):
