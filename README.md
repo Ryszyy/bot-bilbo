@@ -25,5 +25,3 @@ python discover.py
 ```
 export HUBOT_SLACK_NAME, HUBOT_SLACK_TOKEN, HUBOT_SLACK_ID
 
-
-after 56 epoch not improving
