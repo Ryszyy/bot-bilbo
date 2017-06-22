@@ -25,6 +25,7 @@ python discover.py
 ```
 export HUBOT_SLACK_NAME, HUBOT_SLACK_TOKEN, HUBOT_SLACK_ID
 
-Inline-style: 
+
+
 ![alt text](https://github.com/Ryszyy/bot-bilbo/blob/master/s%C5%82odki%20bot.jpg "Bilbo-Bot")
 
