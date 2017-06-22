@@ -58,17 +58,17 @@ def generate_sentence(raw_text=raw_text):
 	sentence = ""
 	start = numpy.random.randint(0, len(dataX)-1)
 	pattern = dataX[start]
-	for i in range(1000):
+	for i in range(100):
 		x = numpy.reshape(pattern, (1, len(pattern), 1))
 		x = x / float(n_vocab)
 		prediction = model.predict(x, verbose=0)
 		index = numpy.argmax(prediction)
 		result = int_to_char[index]
 		seq_in = [int_to_char[value] for value in pattern]
-		sys.stdout.write(result)
+		# sys.stdout.write(result)
 		sentence = sentence + result
 		# print(result, "")
 		pattern.append(index)
 		pattern = pattern[1:len(pattern)]
-	# return sentence
+	return sentence
 # print("\nDone.")
